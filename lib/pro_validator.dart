@@ -1,5 +1,5 @@
 /// pro_validator is a dart package that provides a set of validators
-library pro_validator;
+library;
 
 abstract class Validator<T> {
   const Validator({required this.error});
@@ -258,6 +258,17 @@ class MatchValidator {
   final String error;
 
   String? call(String? v1, String? v2) => v1 == v2 ? null : error;
+}
+
+/// A special match validator to check if the v1 not equals v2 value.
+class NotMatchValidator {
+  NotMatchValidator({
+    required this.error,
+  });
+
+  final String error;
+
+  String? call(String? v1, String? v2) => v1 != v2 ? null : error;
 }
 
 /// Group together and validate the basic validators.
